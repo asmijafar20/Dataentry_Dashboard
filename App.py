@@ -1,7 +1,6 @@
 from flask import Flask, render_template, flash, redirect, url_for, session, request, send_file
 from flask_mysqldb import MySQL
 from wtforms import Form,SelectField, StringField, PasswordField, DateField, IntegerField, TextAreaField, validators
-from passlib.hash import sha256_crypt
 from functools import wraps
 import pandas as pd
 from io import BytesIO
@@ -31,35 +30,12 @@ class RegisterForm(Form):
     ])
     confirm = PasswordField('Confirm Password')
 
-# User Register    
-@app.route('/', methods=['GET', 'POST'])
-def register():
-    form = RegisterForm(request.form)
-    if request.method == 'POST' and form.validate():
-        username = form.username.data
-        password = sha256_crypt.encrypt(str(form.password.data))
 
-        #create cursor
-        cur = mysql.connection.cursor()
-        
-        #Execute Query
-        cur.execute("INSERT INTO users(username, password) VALUES(%s, %s)", (username, password))
-
-        # Commit to DB
-        mysql.connection.commit()
-
-        # Close Connection
-        cur.close()
-
-        flash('You are now registered and can log in', 'success')
-        
-        return redirect(url_for('login'))
-    return render_template('home.html', form = form ) 
 
 
 
 # User Login
-@app.route('/login', methods=['GET','POST'])
+@app.route('/', methods=['GET','POST'])
 def login():
     if request.method == 'POST':
       # get from fields
@@ -79,7 +55,7 @@ def login():
           password = data['password']
 
           #compare the passwords
-          if sha256_crypt.verify(password_candidate, password):
+          if (password_candidate == password):
             # Passed
             session['logged_in'] = True
             session['username'] = username
@@ -88,14 +64,14 @@ def login():
             return redirect(url_for('dataentry'))
           else:
                 error = 'Invalid login'
-                return render_template('login.html', error=error )
+                return render_template('home.html', error=error )
             #close connection
           cur.close()
       else:
             error = 'Username not found'
-            return render_template('login.html', error=error )
+            return render_template('home.html', error=error )
 
-    return render_template('login.html')
+    return render_template('home.html')
 
 #Check if user logged in
 def is_logged_in(f):
