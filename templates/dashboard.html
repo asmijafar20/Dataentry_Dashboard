@@ -1,0 +1,78 @@
+{% extends 'layout.html' %}
+
+
+{% block body %}
+  <h1>Dashboard-TV</h1>
+  <p><a href="/download" class="btn btn-primary">Download</a></p>
+
+ <style>
+
+.btn{
+  position: relative;
+  float: right;
+}
+
+th, td {
+  text-align: center;
+  margin-left: -130px;
+  padding-right: 20px;
+
+}
+
+table{
+  width: 100%;
+  margin-left: -130px;
+  padding: 20px;
+}
+
+ </style>
+  <hr>
+
+  <table class="table table-striped">
+      <tr>
+          <th>Date</th>
+          <th>Channel</th>
+          <th>Programme</th>
+          <th>Time-Slot</th>
+          <th>Anchor</th>
+          <th>Gender</th>
+          <th>Topic</th>
+          
+          <th>Panellist</th>
+          <th>Gender</th>
+          <th>Field</th>
+          <th>Name of person entering data</th>
+          <th>Timestamp</th>
+          <th>Comments</th>
+      </tr>
+
+    {% for row in tv %}
+       <tr>
+        <td>{{row.date}}</td>
+        <td>{{row.name_of_channel}}</td>
+        <td>{{row.name_of_the_programme}}</td>
+        <td>{{row.prime_time_slot}}</td>
+        <td>{{row.name_of_anchor}}</td>
+        <td>{{row.gender_of_anchor}}</td>
+        <td>{{row.topic}}</td>
+        
+        <td>{{row.name_of_panellist}}</td>
+        <td>{{row.gender_of_panellist}}</td>
+        <td>{{row.field_of_panellist}}</td>
+        <td>{{row.name_of_person_entering_data}}</td>
+        <td>{{row.timestamp}}</td>
+        <td>{{row.comments}}</td>
+
+
+        <td><a href="edit_entry/{{row.id}}" class="btn btn-default pull-right">Edit</a></td>
+        <td>
+          <form action="{{url_for('delete_entry', id=row.id)}}" method="post">
+            <input type="hidden" name="_method" value="DELETE">
+            <input type="submit" value="Delete" class="btn btn-danger">
+          </form>
+        </td>
+    </tr>
+
+    {% endfor%}
+  </table>
+{% endblock %}

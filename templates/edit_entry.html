@@ -1,0 +1,139 @@
+{% extends 'layout.html' %}
+
+
+
+
+{% block body %}
+
+<h2>Data Entry: TV</h2>
+<style>
+    input[type=text] {
+        width: 100%;
+        padding: 10px 10px;
+        margin: 7px 0;
+        text-align: left;
+        
+        box-sizing: border-box;
+      }
+      
+      #topic1{
+          margin-top: 1px;
+      }
+    
+      </style>
+    
+
+<form method='POST' action="">
+
+
+  
+{% from "includes/_formhelpers.html" import render_field %}
+    
+<div class="form-group" id="date">
+    {{render_field(form.date, class_="form-control")}}
+</div>
+
+
+    <div class="form-group" id="name_of_channel">
+          {{render_field(form.name_of_channel, class_="form-control")}}
+    </div>
+
+
+    <div class="form-group" id="name_of_programme">
+        {{render_field(form.name_of_the_programme, class_='form-control')}}
+    </div>   
+    
+    <div class="form-group" id="time">
+        {{render_field(form.prime_time_slot, class_="form-control")}}
+  </div>
+    
+    
+    <div class="form-group" id="name_of_anchor">
+        {{render_field(form.name_of_anchor, class_="form-control")}}
+    </div>
+
+    
+    <div class="form-group">
+        
+      <h5>Gender of Anchor</h5>
+      <label class="radio-inline"><input type="radio" name="gender_of_anchor" id="option11" value="Male"> Male </input><br></label>
+        <label class="radio-inline"><input type="radio" name="gender_of_anchor" id="option12" value="Female"> Female </input><br></label>
+        <label class="radio-inline"><input type="radio" name="gender_of_anchor" id="option13" value="Other"> Other </input><br></label>
+
+    </div>
+
+    
+
+    <div class="form-group" id="topic">
+        {{render_field(form.topic, class_="form-control")}}
+    </div>
+
+    <div class="form-group row" id="topic1">
+        <div class="col-xs-3" style="padding-right: 5px;">
+            <h5><b>Topic-Tags</b></h5>
+            {{render_field(form.topic1, class_="form-control")}}
+          </div>
+    </div>
+    
+    <div class="form-group row" id="topic2">
+        <div class="col-xs-3" style="padding-right: 5px;">
+            {{render_field(form.topic2, class_="form-control")}}
+          </div>
+    </div>
+
+    <div class="form-group row" id="topic3">
+        <div class="col-xs-3">
+            {{render_field(form.topic3, class_="form-control")}}
+          </div>
+    </div>
+
+    <div class="form-group row" id="topic4">
+        <div class="col-xs-3">
+            {{render_field(form.topic4, class_="form-control")}}
+          </div>
+    </div>
+
+    <div class="form-group row" id="topic5">
+        <div class="col-xs-3">
+            {{render_field(form.topic5, class_="form-control")}}
+          </div>
+    </div>
+
+    <div class="form-group" id="name_of_panellist">
+        {{render_field(form.name_of_panellist, class_="form-control")}}
+    </div>
+
+    <div class="form-group" >
+        
+        <h5>Gender of Panellist</h5>
+        <label class="radio-inline"><input type="radio" name="gender_of_panellist" id="option1" value="Male"> Male </input><br></label>
+        <label class="radio-inline"><input type="radio" name="gender_of_panellist" id="option2" value="Female"> Female </input><br></label>
+        <label class="radio-inline"><input type="radio" name="gender_of_panellist" id="option3" value="Other"> Other </input><br></label>
+
+      </div>
+
+    <div class="form-group" id="field_of_panellist">
+        {{render_field(form.field_of_panellist, class_="form-control")}}
+    </div>
+
+    <div class="form-group" id="name_of_person_entering_data">
+        {{render_field(form.name_of_person_entering_data, class_="form-control")}}
+    </div>
+
+    <div class="form-group" id="comments">
+        {{render_field(form.comments, class_="form-control")}}
+    </div>
+
+
+
+
+ 
+
+
+    <p><input type="submit" class="btn btn-primary" value="Next"></p>
+
+
+</form>
+</div>
+
+{% endblock %}

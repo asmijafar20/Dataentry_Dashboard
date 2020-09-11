@@ -1,0 +1,70 @@
+{% extends 'layout.html' %}
+
+
+{% block body %}
+  <h1>Dashboard-Newspaper</h1>
+  <p><a href="/downloadnewspaper" class="btn btn-primary">Download</a></p>
+
+ <style>
+
+.btn{
+  position: relative;
+  float: right;
+}
+
+th, td {
+  text-align: center;
+  margin-left: -130px;
+  padding-right: 20px;
+
+}
+
+table{
+  width: 100%;
+  margin-left: -130px;
+  padding: 20px;
+}
+
+ </style>
+  <hr>
+
+  <table class="table table-striped">
+      <tr>
+          <th>Date</th>
+          <th>Newspaper</th>
+          <th>Page Number</th>
+          <th>Page Title</th>
+          <th>Journalist</th>
+          <th>Gender</th>
+          <th>Topic</th>
+          <th>Name of person entering data</th>
+          <th>Timestamp</th>
+          <th>Comments</th>
+      </tr>
+
+    {% for row in newspaper %}
+       <tr>
+        <td>{{row.date}}</td>
+        <td>{{row.name_of_newspaper}}</td>
+        <td>{{row.pageNO}}</td>
+        <td>{{row.page_title}}</td>
+        <td>{{row.name_of_journalist}}</td>
+        <td>{{row.gender_of_journalist}}</td>
+        <td>{{row.topic}}</td>
+        <td>{{row.name_of_person_entering_data}}</td>
+        <td>{{row.timestamp}}</td>
+        <td>{{row.comments}}</td>
+
+
+        <td><a href="edit_entry_news/{{row.id}}" class="btn btn-default pull-right">Edit</a></td>
+        <td>
+          <form action="{{url_for('delete_entry_news', id=row.id)}}" method="post">
+            <input type="hidden" name="_method" value="DELETE">
+            <input type="submit" value="Delete" class="btn btn-danger">
+          </form>
+        </td>
+    </tr>
+
+    {% endfor%}
+  </table>
+{% endblock %}
