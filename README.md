@@ -10,8 +10,8 @@
 
 3. Run `pip install --upgrade pip` to upgrade pip.
 
-4. export FLASK_APP=App.py
+4. Run the following commands `export FLASK_APP=App.py`, `export FLASK_DEBUG=1` , `export FLASK_ENV=development`
 
-5. flask run
+5. Run `flask run`
 
 6. Run `sudo mysql -u root -p` and enter the MySQL password, which you entered during installation of MySQL Server ("root" is default, it may be something else on your machine).
