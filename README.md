@@ -18,6 +18,4 @@
 
 7. flask run
 
-## Mysql commands
-
-8. Run `sudo mysql -u root -p` and enter the MySQL password, which you entered during installation of MySQL Server ("root" is default, it may be something else on your machine).3. Run `pip install --upgrade pip` to upgrade pip.
+8. Run `sudo mysql -u root -p` and enter the MySQL password, which you entered during installation of MySQL Server ("root" is default, it may be something else on your machine).
