@@ -12,10 +12,6 @@
 
 4. export FLASK_APP=App.py
 
-5. export FLASK_DEBUG=1
+5. flask run
 
-6. export FLASK_ENV=development
-
-7. flask run
-
-8. Run `sudo mysql -u root -p` and enter the MySQL password, which you entered during installation of MySQL Server ("root" is default, it may be something else on your machine).
+6. Run `sudo mysql -u root -p` and enter the MySQL password, which you entered during installation of MySQL Server ("root" is default, it may be something else on your machine).
