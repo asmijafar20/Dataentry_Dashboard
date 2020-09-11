@@ -270,14 +270,7 @@ def dashboard():
 
     cur.execute("SELECT * FROM tv")
 
-    columns = [desc[0] for desc in cur.description]
     tv = cur.fetchall()
-    df = pd.DataFrame(list(tv), columns=columns)
-
-    writer = pd.ExcelWriter('data_new.xlsx')
-    df.to_excel(writer, sheet_name='sheet1')
-    writer.save()
-
 
     return render_template('dashboard.html',tv=tv)
 
@@ -289,14 +282,7 @@ def dashboardnewspaper():
 
     cur.execute("SELECT * FROM newspaper")
 
-    columns = [desc[0] for desc in cur.description]
     newspaper = cur.fetchall()
-    df = pd.DataFrame(list(newspaper), columns=columns)
-
-    writer = pd.ExcelWriter('data.xlsx')
-    df.to_excel(writer, sheet_name='sheet1')
-    writer.save()
-
 
     return render_template('dashboard_news.html',newspaper=newspaper)
 
@@ -482,7 +468,7 @@ def download():
     df = pd.DataFrame(list(tv), columns=columns)
 
     output = BytesIO()
-    writer = pd.ExcelWriter(output, engine='xlsxwriter')
+    writer = pd.ExcelWriter(output, engine='xlsxwriter')  # pylint: disable=abstract-class-instantiated
     df.to_excel(writer, sheet_name='Sheet1')
     writer.save()
     output.seek(0)
@@ -511,11 +497,11 @@ def download_news():
 
     
     output = BytesIO()
-    writer = pd.ExcelWriter(output, engine='xlsxwriter')
+    writer = pd.ExcelWriter(output, engine='xlsxwriter')  # pylint: disable=abstract-class-instantiated
     df.to_excel(writer, sheet_name='Sheet1')
     writer.save()
     output.seek(0)
-    return send_file(output, attachment_filename='output2.xlsx', as_attachment=True)
+    return send_file(output, attachment_filename='output2.xlsx', as_attachment=True) 
 
     return redirect(url_for('dashboardnewspaper'))
 
