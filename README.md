@@ -1,5 +1,5 @@
 # Dataentry_Dashboard
-
+ Created a web application for Data Entry Dashboard, which displays the user's entries on the dashboard and exports it to the excel file.
 ## Setup Locally
 
 1. Clone the repo.
